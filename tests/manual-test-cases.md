@@ -126,3 +126,18 @@ Replace /skills/a/SKILL.md exactly with the content below. I authorize the write
 - The assistant may skip the 2-4 option proposal because exact replacement content and explicit authorization were provided.
 - The assistant still verifies file scope and reports the result.
 
+## Test 10: Small Change Mode
+
+**Prompt**
+
+```text
+Tighten only the trigger condition in /skills/a/SKILL.md so it does not activate during general prompt discussion.
+```
+
+**Expected Behavior**
+
+- The assistant uses a lightweight flow.
+- The assistant summarizes only the relevant trigger behavior.
+- The assistant offers exactly two focused options.
+- The assistant does not produce a broad rewrite plan unless the file has deeper contradictions.
+- The assistant still requires explicit confirmation before a live write.

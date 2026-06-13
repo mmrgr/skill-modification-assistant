@@ -80,6 +80,18 @@ skills/
 
 The exact skills directory depends on your runtime. The skill itself does not require external dependencies.
 
+## Supported Runtimes
+
+This package is designed first for Codex-style skill loaders that read a `SKILL.md` file with YAML frontmatter.
+
+Compatibility notes:
+
+- **Codex / Codex CLI**: primary target.
+- **Claude Code**: usable as a skill-style instruction package, but installation paths and automatic triggering may differ.
+- **Cursor, OpenCode, and rules-based agents**: compatible as reference instructions when copied into the runtime's rule or instruction format; automatic skill discovery is not guaranteed.
+
+For runtimes that do not support `SKILL.md` discovery, use this repository as a structured instruction bundle and adapt the frontmatter description into that runtime's trigger mechanism.
+
 ## Usage
 
 Ask the agent to review or modify a specific skill:
@@ -136,6 +148,10 @@ The skill can automate reading, summarizing, diagnosing, and proposing changes. 
 ### The Smallest Correct Change
 
 A good skill edit should be easy to review. The assistant should prefer targeted patches unless the user confirms a structural rewrite or the source skill is too contradictory to repair locally.
+
+### Lightweight By Default
+
+For narrow changes, such as one trigger fix or one confirmation rule, the assistant should use a small-change flow: a short summary, two focused options, explicit confirmation, and targeted validation.
 
 ### Preserve Working Capabilities
 
